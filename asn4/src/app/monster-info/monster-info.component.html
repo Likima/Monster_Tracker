@@ -1,0 +1,15 @@
+<!-- FILEPATH: /C:/Users/tangb/Coding/asn4/src/app/monster-info/monster-info.component.html -->
+<h1 mat-dialog-title>{{ monster.name }}</h1>
+<div mat-dialog-content>
+    <img [src]="monster.image" [alt]="'Picture of ' + monster.name"> <br>
+    Location: {{ monster.location }} <br>
+    Time Reported: {{ monster.timeReported | date: 'medium' }} <br>
+    Current Status: {{ monster.status }}
+    <button *ngIf="monster.status === 'Open'" (click)="closeMonster($event, monster.id)">Close</button><br>
+    {{ monster.description }} <br>
+    Reported By: {{ monster.reportedBy }} <br>
+        Phone Number: {{ monster.phoneNumber }} <br>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close cdkFocusInitial class="btn btn-primary">Close</button>
+</div>

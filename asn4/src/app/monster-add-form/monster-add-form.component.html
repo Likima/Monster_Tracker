@@ -1,0 +1,52 @@
+<button class="btn btn-primary" (click)="showForm = true">Create Nuisance Report</button>
+
+<div *ngIf="showForm">
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value); resetForm()" class="container">
+        <fieldset class="d-grid gap-2 col-12">
+            <legend>ADD MONSTER</legend>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" formControlName="name" class="form-control" placeholder="Name">
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <select name="location" id="location" formControlName="location" class="form-select">
+                    <option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</option>
+                    <option value="Add Location">Add Location</option>
+                </select>
+            </div>
+            <div *ngIf = "showAddForm" class="mb-3">
+                <label for="title" class="form-label">Location Name</label>
+                <input type="text" name="title" id="title" formControlName="locName" class="form-control" placeholder="Title">
+            </div>
+            <div *ngIf = "showAddForm" class="mb-3">
+                <label for="latitude" class="form-label">Latitude</label>
+                <input type="number" name="latitude" id="latitude" formControlName="latitude" class="form-control" placeholder="Latitude">
+            </div>
+            <div *ngIf = "showAddForm" class="mb-3">
+                <label for="longitude" class="form-label">Longitude</label>
+                <input type="number" name="longitude" id="longitude" formControlName="longitude" class="form-control" placeholder="Longitude">
+            </div>
+            <div class = "mb-3">
+                <label for = "Image" class = "form-label">Image</label>
+                <input type = "text" name = "image" id = "image" formControlName="image" class = "form-control" placeholder="Image">
+            </div>
+            <div class="mb-3">
+                <label for="add_info" class="form-label">Additional Info (Optional)</label>
+                <input type="text" name="info" id="add_info" formControlName="description" class="form-control" placeholder="Additional Info">
+            </div>
+            <h2>Your Information</h2>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" name="phone" id="phone" formControlName="phoneNumber" class="form-control" placeholder="Phone Number">
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" name="name" id="name" formControlName="reportedBy" class="form-control" placeholder="Your Name">
+            </div>
+            <button class="btn btn-outline-primary" [disabled]="!form.valid">SAVE</button>
+            
+        </fieldset>
+    </form>
+</div>
+

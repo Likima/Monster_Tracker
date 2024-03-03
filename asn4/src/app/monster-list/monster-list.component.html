@@ -1,0 +1,25 @@
+<app-map></app-map>
+<div class="grid-container">
+    <div class="row">
+        <div class="col text-center align-items monster-info">Location</div>
+        <div class="col text-center align-items monster-info">Name</div>
+        <div class="col text-center align-items monster-info">Time Reported</div>
+        <div class="col text-center align-items monster-info">Status</div>
+        <div class="col text-center align-items monster-info">
+            <select (change)="onSortChange($event)">
+                <option value="name">Sort by Name</option>
+                <option value="location">Sort by Location</option>
+                <option value="time">Sort by Time Reported</option>
+                <option value="status">Sort by Status</option>
+            </select>
+        </div>
+        <div class="col text-center align-items monster-info"></div>
+    </div>
+
+    <app-monster
+        *ngFor="let m of monster"
+        [monster]="m"
+        (delete) = "onMonsterDeleted($event)"
+        (info) = "onMonsterInfo($event)"
+    ></app-monster>
+</div>
